@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 16:55:46 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/24 21:50:24 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/05/24 22:52:39 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ char	**fill_map(void)
         return (NULL);
     m.maplines = maplinescount(m.fd);
     close(m.fd);
-    m.str = (char **)malloc((m.maplines + 1) * sizeof(char *));
-    if (!m.str)
+    m.map = (char **)malloc((m.maplines + 1) * sizeof(char *));
+    if (!m.map)
         return (NULL);
     m.fd = open("maps/map.ber", O_RDONLY);
     if (m.fd < 0)
@@ -47,11 +47,11 @@ char	**fill_map(void)
     m.i = 0;
     while ((m.buffer = get_next_line(m.fd)) != NULL)
     {
-        m.str[m.i] = ft_strdup(m.buffer);
+        m.map[m.i] = ft_strdup(m.buffer);
         free(m.buffer);
         m.i++;
     }
-    m.str[m.i] = NULL;
+    m.map[m.i] = NULL;
     close(m.fd);
-    return (m.str);
+    return (m.map);
 }

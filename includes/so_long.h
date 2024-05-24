@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:08:21 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/24 22:22:18 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/05/24 23:10:16 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,19 @@
 #include <fcntl.h>
 # define BUFFER_SIZE 50
 
+typedef struct s_map
+{
+    char	*buffer;
+    char	**map;
+    int		fd;
+    int		maplines;
+    int		i;
+	int		x;
+	int		y;
+	int		player_x;
+	int		player_y;
+}              t_map;
+
 typedef struct	s_data {
 	void	*img;
 	char	*addr;
@@ -30,18 +43,8 @@ typedef struct	s_data {
 	void	*mlx;
 	void	*win;
 	int		j;
+	t_map	map;
 }				t_data;
-
-typedef struct s_map
-{
-    char	*buffer;
-    char	**str;
-    int		fd;
-    int		maplines;
-    int		i;
-	int		x;
-	int		y;
-}              t_map;
 
 int		ft_strlen(char *str);
 char	*get_next_line(int fd);
@@ -54,7 +57,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	draw_image(t_data *data, char *file_path, int x, int y);
 void	ft_putstr_fd(char *s, int fd);
 int		mapcheck_return_size(char **map);
-void	map_design(t_data *img, char **map);
+void	map_design(t_data img, char **map);
 
 
 

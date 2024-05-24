@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:10:20 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/24 22:22:41 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/05/24 22:36:23 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,9 @@ void    map_design(t_data img , char **map)
         while (map[img.i][img.j] != '\0')
         {
             if (map[img.i][img.j] == '1')
-            {
                 draw_image(&img, "image/Wall.xpm", img.j * 50, img.i * 50);
-            }
             else if (map[img.i][img.j] == '0')
-            {
                 draw_image(&img, "image/Background.xpm", img.j * 50, img.i * 50);
-            }
             else if (map[img.i][img.j] == 'P')
             {
                 draw_image(&img, "image/Background.xpm", img.j * 50, img.i * 50);
