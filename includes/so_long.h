@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:08:21 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/24 23:10:16 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/05/25 17:58:52 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 #include <mlx.h>
 #include <fcntl.h>
 # define BUFFER_SIZE 50
+
+typedef struct s_images
+{
+	char	*player_left;
+	char	*player_right;
+	char	*player_up;
+	char	*player_down;
+}			t_images;
 
 typedef struct s_map
 {
@@ -44,7 +52,9 @@ typedef struct	s_data {
 	void	*win;
 	int		j;
 	t_map	map;
+	t_images	images;
 }				t_data;
+
 
 int		ft_strlen(char *str);
 char	*get_next_line(int fd);

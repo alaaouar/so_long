@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:10:20 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/24 22:36:23 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/05/25 18:11:37 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,12 @@ void    map_design(t_data img , char **map)
         }
         img.i++;
     }
+}
+
+void   player_image(t_data *img)
+{
+    img->images.player_left = "image/player_left.xpm";
+    img->images.player_right = "image/player_right.xpm";
+    img->images.player_up = "image/player_up.xpm";
+    img->images.player_down = "image/player_down.xpm";
 }

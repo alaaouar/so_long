@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:41:27 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/24 23:25:03 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/05/25 18:03:52 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int player_location(t_map *play)
             if (play->map[i][j] == 'P')
             {
                 play->player_x = j;
-                printf("player x = %d\n", play->player_x);
                 play->player_y = i;
-                printf("player y = %d\n", play->player_y);
             }
             j++;
         }
