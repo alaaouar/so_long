@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 16:37:53 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/23 18:47:19 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/05/26 15:31:15 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*line_join(char *old_line, char *buffer)
 	while (count--)
 		new_line[i + count] = buffer[count];
 	change_buffer(buffer);
-	ft_free (old_line);
+	ft_free(old_line);
 	return (new_line);
 }
 

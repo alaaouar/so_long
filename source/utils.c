@@ -6,13 +6,13 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:27:36 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/24 17:51:38 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/05/26 15:32:46 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int		ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int	count;
 
@@ -26,7 +26,7 @@ int		ft_strlen(char *str)
 
 void	*ft_free(char *line)
 {
-	free (line);
+	free(line);
 	return (NULL);
 }
 
@@ -45,23 +45,6 @@ char	*ft_strdup(char *s1)
 	return (new);
 }
 
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
-{
-    size_t	i;
-
-    i = 0;
-    if (dstsize != 0)
-    {
-        while (src[i] != '\0' && i < (dstsize - 1))
-        {
-            dst[i] = src[i];
-            i++;
-        }
-        dst[i] = '\0';
-    }
-    return (ft_strlen(src));
-}
-
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
@@ -69,4 +52,32 @@ void	ft_putstr_fd(char *s, int fd)
 	i = -1;
 	while (s[++i])
 		write(fd, &s[i], 1);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	c;
+
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else
+	{
+		if (n < 0)
+		{
+			write(fd, "-", 1);
+			n = -n;
+			ft_putnbr_fd(n, fd);
+		}
+		else if (n < 10)
+		{
+			c = n + '0';
+			write(fd, &c, 1);
+		}
+		else
+		{
+			ft_putnbr_fd(n / 10, fd);
+			c = (n % 10) + '0';
+			write(fd, &c, 1);
+		}
+	}
 }
