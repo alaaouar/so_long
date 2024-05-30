@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:08:21 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/27 04:10:31 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/05/27 06:50:03 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct s_map
 	int			player_x;
 	int			player_y;
 	int			collectibles;
+	int			resolution_x;
+	int			resolution_y;
 	t_valid		valid;
 }				t_map;
 
@@ -104,6 +106,7 @@ void			image_size(int i, int j, t_data img);
 void			init_data(t_data *img);
 void   			exit_image_according_to_collec(t_data *img);
 void			exit_declaration(t_data *play);
+int				map_walls(t_map *play);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:41:27 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/27 04:10:24 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/05/27 07:02:12 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	init_data(t_data *img)
 	img->map.map = fill_map();
 	img->map.x = mapcheck_return_size(img->map.map);
 	img->map.y = ft_strlen(img->map.map[0]) - 1;
-	img->map.x = img->map.x * 50;
-	img->map.y = img->map.y * 50;
+	img->map.resolution_x = img->map.x * 50;
+	img->map.resolution_y = img->map.y * 50;
 	img->map.collectibles = 0;
 	img->i = 0;
 }
@@ -65,9 +65,10 @@ int	main(void)
 	t_data	img;
 
 	init_data(&img);
+	map_walls(&img.map);
 	image_size(img.map.x, img.map.y, img);
 	img.mlx = mlx_init();
-	img.win = mlx_new_window(img.mlx, img.map.y, img.map.x, "dark_souls");
+	img.win = mlx_new_window(img.mlx, img.map.resolution_y, img.map.resolution_x, "dark_souls");
 	player_location(&img.map);
 	player_image(&img);
 	img.images.player = img.images.player_down;

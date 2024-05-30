@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 22:26:39 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/26 19:53:44 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/05/27 07:05:41 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	handle_exit(int keycode, t_data *img)
 {
 	if (keycode == 53)
 	{
+		ft_putstr_fd("exiting...", 1);
 		mlx_destroy_window(img->mlx, img->win);
 		exit(0);
 	}
