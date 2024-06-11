@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 22:26:39 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/27 07:05:41 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/11 18:55:43 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	handle_exit(int keycode, t_data *img)
 {
-	if (keycode == 53)
+	if (keycode == 65307)
 	{
 		ft_putstr_fd("exiting...", 1);
 		mlx_destroy_window(img->mlx, img->win);
@@ -24,7 +24,7 @@ void	handle_exit(int keycode, t_data *img)
 
 void	handle_up(int keycode, t_data *img)
 {
-	if (keycode == 13)
+	if (keycode == 119)
 	{
 		img->images.player = img->images.player_up;
 		if (img->map.map[img->map.player_y - 1][img->map.player_x] == '1')
@@ -53,7 +53,7 @@ void	handle_up(int keycode, t_data *img)
 
 void	handle_down(int keycode, t_data *img)
 {
-	if (keycode == 1)
+	if (keycode == 115)
 	{
 		img->images.player = img->images.player_down;
 		if (img->map.map[img->map.player_y + 1][img->map.player_x] == '1')
@@ -82,7 +82,7 @@ void	handle_down(int keycode, t_data *img)
 
 void	handle_left(int keycode, t_data *img)
 {
-	if (keycode == 0)
+	if (keycode == 97)
 	{
 		img->images.player = img->images.player_left;
 		if (img->map.map[img->map.player_y][img->map.player_x - 1] == '1')
@@ -111,7 +111,7 @@ void	handle_left(int keycode, t_data *img)
 
 void	handle_right(int keycode, t_data *img)
 {
-	if (keycode == 2)
+	if (keycode == 100)
 	{
 		img->images.player = img->images.player_right;
 		if (img->map.map[img->map.player_y][img->map.player_x + 1] == '1')
@@ -138,11 +138,12 @@ void	handle_right(int keycode, t_data *img)
 	}
 }
 
-void	flood_fill_map(int x, int y, char **map, int size)
+void	flood_fill_map(int x, int y, char **map, int size , t_data *dara)
 {
-	if (x < 0 || y < 0 || x >= size || y >= size || map[y][x] != '0')
+	if (x < 0 || y < 0 || x >= size || y >= size || map[y][x] != '1')
 		return ;
 	
+	if (t_data->t_map->)
 	map[y][x] = '1';
 	flood_fill_map(x + 1, y, map, size);
 	flood_fill_map(x - 1, y, map, size);

@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 16:55:46 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/26 15:30:32 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/07 20:25:46 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	maplinescount(int fd)
 {
 	char	*buffer;
 	int		i;
-	t_map	m;
+	// t_map	map;
 
 	i = 0;
 	while ((buffer = get_next_line(fd)) != NULL)
@@ -24,8 +24,8 @@ int	maplinescount(int fd)
 		free(buffer);
 		i++;
 	}
-	m.y = 0;
-	m.y = i;
+	// map.y = 0;
+	// map.y = i;
 	return (i);
 }
 

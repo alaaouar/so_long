@@ -1,14 +1,24 @@
-CC = gcc
+CC = cc
 SRC = source/get_next_line.c source/utils.c main.c get_map.c source/mlx_utils.c event.c source/event_utils.c source/map_utils.c 
 NAME = so_long
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
-MLX = -lmlx -framework OpenGL -framework AppKit
+OBJ = $(SRC:.c=.o)
 
-all:
-	$(CC) $(CFLAGS) $(SRC) $(MLX) -o $(NAME)
+
+all:$(NAME)
+
+
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+
+
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+
 
 clean:
-	rm -f $(NAME)
+	rm -rf $(NAME)
+	rm -rf $(OBJ)
 
 fclean: clean
 

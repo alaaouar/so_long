@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:08:21 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/27 06:50:03 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/11 18:52:49 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_map
 {
 	char		*buffer;
 	char		**map;
+	char		**map_test;
 	int			fd;
 	int			maplines;
 	int			i;
