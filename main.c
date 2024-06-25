@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:41:27 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/25 15:57:07 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:27:07 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,14 @@ void	dps(t_data *img)
 	free(img->map.map_test);
 }
 
+void	mlx_mem_free(t_data *data)
+{
+	mlx_destroy_image(data->mlx, data->img);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+}
+
 int	main(void)
 {
 	t_data	img;
@@ -99,6 +107,7 @@ int	main(void)
 	exit_image_according_to_collec(&img);
 	map_design(img, img.map.map);
 	mlx_key_hook(img.win, handle_keyboard, &img);
+	mlx_hook(img.win, DestroyNotify, 0, mlx_quit, &img);
 	mlx_loop(img.mlx);
 	while (img.map.map[img.i] != NULL)
 	{

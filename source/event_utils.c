@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:18:47 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/25 14:19:58 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:49:15 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,16 @@ int	collectibles_checker(t_map *play)
 int	handle_keyboard(int keycode, t_data *img)
 {
 	static int i = 0;
+	
 	handle_exit(keycode, img);
 	handle_up(keycode, img);
 	handle_down(keycode, img);
 	handle_left(keycode, img);
 	handle_right(keycode, img);
+	if (keycode == 119 ||
+		keycode == 115 || 
+		keycode == 97 || 
+		keycode == 100)
 	i++;
 	ft_putstr_fd("\r Moves: ", 1);
 	ft_putnbr_fd(i, 1);

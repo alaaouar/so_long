@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:08:21 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/25 15:14:00 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:26:48 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <fcntl.h>
 # include <mlx.h>
+# include <X11/X.h>
 # include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -111,6 +112,6 @@ void			exit_declaration(t_data *play);
 int				map_walls(t_map *play);
 int 			flood_fill(char **map, int x, int y, char target);
 int				ft_line_count(char **map);
-
+int				mlx_quit(t_data *data);
 
 #endif
