@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 22:26:39 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/11 18:55:43 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:18:17 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	handle_exit(int keycode, t_data *img)
 {
 	if (keycode == 65307)
 	{
-		ft_putstr_fd("exiting...", 1);
+		ft_putstr_fd("\n exiting...", 1);
 		mlx_destroy_window(img->mlx, img->win);
 		exit(0);
 	}
@@ -32,7 +32,7 @@ void	handle_up(int keycode, t_data *img)
 		if (img->map.map[img->map.player_y - 1][img->map.player_x] == 'E'
 			&& img->map.collectibles == 0)
 		{
-			ft_putstr_fd("You won\n", 1);
+			ft_putstr_fd("\nYou won\n", 1);
 			mlx_destroy_window(img->mlx, img->win);
 			exit(0);
 		}
@@ -61,7 +61,7 @@ void	handle_down(int keycode, t_data *img)
 		if (img->map.map[img->map.player_y + 1][img->map.player_x] == 'E'
 			&& img->map.collectibles == 0)
 		{
-			ft_putstr_fd("You won\n", 1);
+			ft_putstr_fd("\nYou won\n", 1);
 			mlx_destroy_window(img->mlx, img->win);
 			exit(0);
 		}
@@ -90,7 +90,7 @@ void	handle_left(int keycode, t_data *img)
 		if (img->map.map[img->map.player_y][img->map.player_x - 1] == 'E'
 			&& img->map.collectibles == 0)
 		{
-			ft_putstr_fd("You won\n", 1);
+			ft_putstr_fd("\nYou won\n", 1);
 			mlx_destroy_window(img->mlx, img->win);
 			exit(0);
 		}
@@ -119,14 +119,14 @@ void	handle_right(int keycode, t_data *img)
 		if (img->map.map[img->map.player_y][img->map.player_x + 1] == 'E'
 			&& img->map.collectibles == 0)
 		{
-			ft_putstr_fd("You won\n", 1);
+			ft_putstr_fd("\nYou won\n", 1);
 			mlx_destroy_window(img->mlx, img->win);
 			exit(0);
 		}
 		else if (img->map.map[img->map.player_y][img->map.player_x + 1] == 'E'
 				&& img->map.collectibles != 0)
 		{
-			ft_putstr_fd("You need to collect all the collectibles\n", 1);
+			ft_putstr_fd("\r You need to collect all the collectibles", 1);
 			return ;
 		}
 		if (img->map.map[img->map.player_y][img->map.player_x + 1] == 'C')
@@ -138,15 +138,20 @@ void	handle_right(int keycode, t_data *img)
 	}
 }
 
-void	flood_fill_map(int x, int y, char **map, int size , t_data *dara)
+int flood_fill(char **map, int x, int y, char target)
 {
-	if (x < 0 || y < 0 || x >= size || y >= size || map[y][x] != '1')
-		return ;
+    if (x < 0 || x >= ft_line_count(map) || y < 0 || y >= (int)strlen(map[0])
+        || map[x][y] == '1' || map[x][y] == '*')
+        return 0;
+    
+    if (map[x][y] == target)
+        return 1;
 	
-	if (t_data->t_map->)
-	map[y][x] = '1';
-	flood_fill_map(x + 1, y, map, size);
-	flood_fill_map(x - 1, y, map, size);
-	flood_fill_map(x, y + 1, map, size);
-	flood_fill_map(x, y - 1, map, size);
+    map[x][y] = '*';
+	printf("%c , x = %d, y = %d \n", map[x][y], x,y);
+
+    return (flood_fill(map, x + 1, y, target) ||
+            flood_fill(map, x - 1, y, target) ||
+            flood_fill(map, x, y + 1, target) ||
+            flood_fill(map, x, y - 1, target));
 }

@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:18:47 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/27 04:33:08 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/25 14:19:58 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,8 @@ int	handle_keyboard(int keycode, t_data *img)
 	handle_left(keycode, img);
 	handle_right(keycode, img);
 	i++;
-	ft_putstr_fd("Moves: ", 1);
+	ft_putstr_fd("\r Moves: ", 1);
 	ft_putnbr_fd(i, 1);
-	ft_putstr_fd("\n", 1);
 	return (0);
 }
 
