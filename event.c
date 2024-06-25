@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 22:26:39 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/25 15:18:17 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:57:42 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,6 @@ int flood_fill(char **map, int x, int y, char target)
         return 1;
 	
     map[x][y] = '*';
-	printf("%c , x = %d, y = %d \n", map[x][y], x,y);
-
     return (flood_fill(map, x + 1, y, target) ||
             flood_fill(map, x - 1, y, target) ||
             flood_fill(map, x, y + 1, target) ||

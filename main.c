@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:41:27 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/25 15:27:21 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:57:07 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void	dps(t_data *img)
 
 	i = 0;	
 	i = flood_fill(img->map.map_test, img->map.player_x, img->map.player_y, 'E');
-	printf("x => %d, y => %d \n", img->map.player_x, img->map.player_y);
-	printf("return => %d\n", i);
 	if (i == 0)
 	{
 		ft_putstr_fd("map not valid flood-fill", 1);
