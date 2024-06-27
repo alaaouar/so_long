@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:18:47 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/27 19:31:21 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:43:22 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,6 @@ int	handle_keyboard(int keycode, t_data *img)
 	return (0);
 }
 
-void    exit_declaration(t_data *play)
-{
-	play->exit.exit_1 = "image/exit_1.xpm";
-	play->exit.exit_2 = "image/exit_2.xpm";
-	play->exit.exit_3 = "image/exit_3.xpm";
-	play->exit.exit_4 = "image/exit_4.xpm";
-}
-
 void    exit_image_according_to_collec(t_data *img)
 {
 	if (img->map.collectibles == 0)
@@ -85,7 +77,5 @@ void    exit_image_according_to_collec(t_data *img)
 	else if(img->map.collectibles == 3)
 		img->exit.exit = img->exit.exit_1;
 	else
-	{
 		img->exit.exit = "image/exit_1.xpm";
-	}
 }

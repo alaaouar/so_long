@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:08:21 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/27 19:31:47 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:41:12 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,10 @@ void			handle_right(int keycode, t_data *img);
 void			image_size(int i, int j, t_data img);
 void			init_data(t_data *img);
 void   			exit_image_according_to_collec(t_data *img);
-void			exit_declaration(t_data *play);
 int				map_walls(t_map *play);
 int 			flood_fill(char **map, int x, int y, char target);
 int				ft_line_count(char **map);
 int				mlx_quit(t_data *data);
+void			insert_xpm_to_char(t_data *img);
 
 #endif

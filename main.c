@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:41:27 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/27 19:29:33 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:43:12 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	init_data(t_data *img)
 	img->map.resolution_y = img->map.y * 50;
 	img->map.collectibles = 0;
 	img->i = 0;
+	insert_xpm_to_char(img);
 }
 
 void	flood_fill_logic(t_data *img)
@@ -108,13 +109,9 @@ int	main(void)
 	flood_fill_logic(&img);
 	image_size(img.map.x, img.map.y, img);
 	mlx_everything(&img);
-
-	player_image(&img);
-
-	img.map.collectibles = collectibles_checker(&img.map);
+	collectibles_checker(&img.map);	
 	
 	
-	exit_declaration(&img);
 	exit_image_according_to_collec(&img);
 
 

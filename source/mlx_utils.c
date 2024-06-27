@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:10:20 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/27 19:28:59 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:39:22 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,15 @@ int	mapcheck_return_size(char **map)
 
 void	map_2(t_data img, char **map)
 {
+	exit_image_according_to_collec(&img);
 	if (map[img.i][img.j] == '1')
 		draw_image(&img, "image/Wall.xpm", img.j * 50, img.i * 50);
 	else if (map[img.i][img.j] == '0')
 		draw_image(&img, "image/Background.xpm", img.j * 50, img.i * 50);
 	else if (map[img.i][img.j] == 'P')
-	{
-		draw_image(&img, "image/Background.xpm", img.j * 50, img.i * 50);
 		draw_image(&img, img.images.player, img.j * 50, img.i * 50);
-	}
 	else if (map[img.i][img.j] == 'E')
-	{
-		exit_declaration(&img);
-		exit_image_according_to_collec(&img);
-		draw_image(&img, "image/Background.xpm", img.j * 50, img.i * 50);
 		draw_image(&img, img.exit.exit, img.j * 50, img.i * 50);
-	}
 }
 
 void	map_design(t_data img, char **map)
@@ -95,11 +88,4 @@ void	map_design(t_data img, char **map)
 	}
 }
 
-void	player_image(t_data *img)
-{
-	img->images.player_left = "image/player_left.xpm";
-	img->images.player_right = "image/player_right.xpm";
-	img->images.player_up = "image/player_up.xpm";
-	img->images.player_down = "image/player_down.xpm";
-	img->images.player = img->images.player_down;
-}
+
