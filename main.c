@@ -6,11 +6,11 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:41:27 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/25 17:27:07 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:29:33 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "so_long.h"
 
 int	player_location(t_map *play)
 {
@@ -61,7 +61,7 @@ void	init_data(t_data *img)
 	img->i = 0;
 }
 
-void	dps(t_data *img)
+void	flood_fill_logic(t_data *img)
 {
 	int i;
 
@@ -89,6 +89,15 @@ void	mlx_mem_free(t_data *data)
 	free(data->mlx);
 }
 
+
+void	mlx_everything(t_data *img)
+{
+	img->mlx = mlx_init();
+	img->win = mlx_new_window(img->mlx, img->map.resolution_y, img->map.resolution_x, "dark_souls");
+	
+}
+
+
 int	main(void)
 {
 	t_data	img;
@@ -96,16 +105,25 @@ int	main(void)
 	init_data(&img);
 	map_walls(&img.map);
 	player_location(&img.map);
-	dps(&img);
+	flood_fill_logic(&img);
 	image_size(img.map.x, img.map.y, img);
-	img.mlx = mlx_init();
-	img.win = mlx_new_window(img.mlx, img.map.resolution_y, img.map.resolution_x, "dark_souls");
+	mlx_everything(&img);
+
 	player_image(&img);
-	img.images.player = img.images.player_down;
+
 	img.map.collectibles = collectibles_checker(&img.map);
+	
+	
 	exit_declaration(&img);
 	exit_image_according_to_collec(&img);
+
+
+	
 	map_design(img, img.map.map);
+
+
+
+	
 	mlx_key_hook(img.win, handle_keyboard, &img);
 	mlx_hook(img.win, DestroyNotify, 0, mlx_quit, &img);
 	mlx_loop(img.mlx);

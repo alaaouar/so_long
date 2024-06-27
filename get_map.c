@@ -6,11 +6,11 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 16:55:46 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/25 15:24:41 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:24:51 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "so_long.h"
 
 int	maplinescount(int fd)
 {

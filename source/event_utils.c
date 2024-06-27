@@ -6,11 +6,11 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:18:47 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/25 17:49:15 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:31:21 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../so_long.h"
 
 void	checker(int x, int y)
 {
@@ -21,13 +21,11 @@ void	checker(int x, int y)
 	}
 }
 
-int	collectibles_checker(t_map *play)
+void	collectibles_checker(t_map *play)
 {
 	int	i;
 	int	j;
-	int	r;
 
-	r = 0;
 	i = 0;
 	play->valid.player = 0;
 	play->valid.exit = 0;
@@ -37,7 +35,7 @@ int	collectibles_checker(t_map *play)
 		while (play->map[i][j] != '\0')
 		{
 			if (play->map[i][j] == 'C')
-				r++;
+				play->collectibles++;
 			if (play->map[i][j] == 'P')
 				play->valid.player++;
 			if (play->map[i][j] == 'E')
@@ -47,7 +45,6 @@ int	collectibles_checker(t_map *play)
 		i++;
 	}
 	checker(play->valid.player, play->valid.exit);
-	return (r);
 }
 
 int	handle_keyboard(int keycode, t_data *img)

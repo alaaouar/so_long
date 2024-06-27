@@ -6,11 +6,11 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 16:37:53 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/05/26 15:31:15 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:26:19 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../so_long.h"
 
 void	shift_left(char *buffer, int nb)
 {

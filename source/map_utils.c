@@ -6,11 +6,11 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 22:10:59 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/25 15:22:34 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:25:08 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../so_long.h"
 
 int check_last(char *str)
 {

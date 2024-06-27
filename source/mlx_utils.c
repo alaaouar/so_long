@@ -6,11 +6,11 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:10:20 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/25 17:47:51 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:28:59 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../so_long.h"
 
 void	draw_image(t_data *data, char *file_path, int x, int y)
 {
@@ -101,6 +101,5 @@ void	player_image(t_data *img)
 	img->images.player_right = "image/player_right.xpm";
 	img->images.player_up = "image/player_up.xpm";
 	img->images.player_down = "image/player_down.xpm";
-	img->images.door = "image/preexit.xpm";
-	img->images.win_game = "image/Exit.xpm";
+	img->images.player = img->images.player_down;
 }

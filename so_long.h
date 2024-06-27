@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:08:21 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/25 17:26:48 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:31:47 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int				mapcheck_return_size(char **map);
 void			map_design(t_data img, char **map);
 void			player_image(t_data *img);
 int				handle_keyboard(int keycode, t_data *img);
-int				collectibles_checker(t_map *map);
+void			collectibles_checker(t_map *map);
 void			ft_putnbr_fd(int n, int fd);
 void			checker(int x, int y);
 void			handle_exit(int keycode, t_data *img);

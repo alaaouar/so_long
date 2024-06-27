@@ -6,11 +6,11 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 22:26:39 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/25 17:50:03 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:24:56 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "so_long.h"
 
 void	handle_exit(int keycode, t_data *img)
 {
