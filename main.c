@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:41:27 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/27 19:43:12 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:49:43 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,9 @@ int	main(void)
 	image_size(img.map.x, img.map.y, img);
 	mlx_everything(&img);
 	collectibles_checker(&img.map);	
-	
-	
-	exit_image_according_to_collec(&img);
-
-
-	
 	map_design(img, img.map.map);
+	
+	
 
 
 

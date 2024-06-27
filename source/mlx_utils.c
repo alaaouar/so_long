@@ -6,26 +6,12 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:10:20 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/27 19:39:22 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:57:16 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	draw_image(t_data *data, char *file_path, int x, int y)
-{
-	void	*img;
-	int		img_width;
-	int		img_height;
-
-	img = mlx_xpm_file_to_image(data->mlx, file_path, &img_width, &img_height);
-	if (!img)
-	{
-		ft_putstr_fd("Error\nFailed to load image.\n", 2);
-		exit(1);
-	}
-	mlx_put_image_to_window(data->mlx, data->win, img, x, y);
-}
 
 int	mapcheck_return_size(char **map)
 {
@@ -53,6 +39,21 @@ int	mapcheck_return_size(char **map)
 	return (count);
 }
 
+void	draw_image(t_data *data, char *file_path, int x, int y)
+{
+	void	*img;
+	int		img_width;
+	int		img_height;
+
+	img = mlx_xpm_file_to_image(data->mlx, file_path, &img_width, &img_height);
+	if (!img)
+	{
+		ft_putstr_fd("Error\nFailed to load image.\n", 2);
+		exit(1);
+	}
+	mlx_put_image_to_window(data->mlx, data->win, img, x, y);
+}
+
 void	map_2(t_data img, char **map)
 {
 	exit_image_according_to_collec(&img);
@@ -77,11 +78,7 @@ void	map_design(t_data img, char **map)
 				|| (map[img.i][img.j] == 'P') || (map[img.i][img.j] == 'E'))
 				map_2(img, map);
 			else if (map[img.i][img.j] == 'C')
-			{
-				draw_image(&img, "image/Background.xpm", img.j * 50, img.i
-					* 50);
 				draw_image(&img, "image/Collect.xpm", img.j * 50, img.i * 50);
-			}
 			img.j++;
 		}
 		img.i++;
