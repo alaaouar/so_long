@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 22:10:59 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/01 18:48:18 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/01 18:59:49 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_last(char *str)
 	return (0);
 }
 
-int	map_check_if_walls_arround(t_map *play)
+void	map_check_if_walls_arround(t_map *play)
 {
 	int	i;
 
@@ -53,7 +53,6 @@ int	map_check_if_walls_arround(t_map *play)
 		}
 		i++;
 	}
-	return (0);
 }
 
 int	map_walls(t_map *play)

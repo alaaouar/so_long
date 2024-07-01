@@ -6,32 +6,11 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 22:26:39 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/01 14:03:44 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/01 18:51:35 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	handle_exit(int keycode, t_data *img)
-{
-	if (keycode == 65307)
-	{
-		ft_putstr_fd("\n exiting... \n", 1);
-		mlx_destroy_window(img->mlx, img->win);
-		exit(0);
-	}
-}
-
-int	mlx_quit(t_data *data)
-{
-	mlx_loop_end(data->mlx);
-	mlx_loop_hook(data->mlx, NULL, NULL);
-	ft_putstr_fd("\n+------------------------------------------+\n|  "
-					"Wish you enjoyed it, have a good day!!  "
-					"|\n+------------------------------------------+\n\n",
-					1);
-	return (0);
-}
 
 void	handle_up(int keycode, t_data *img)
 {

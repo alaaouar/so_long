@@ -6,19 +6,19 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:08:21 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/27 19:41:12 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/01 19:27:13 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <X11/X.h>
 # include <fcntl.h>
 # include <mlx.h>
-# include <X11/X.h>
-# include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <string.h>
 # include <unistd.h>
 # define BUFFER_SIZE 50
 
@@ -29,7 +29,7 @@ typedef struct s_exit
 	char		*exit_3;
 	char		*exit_4;
 	char		*exit;
-}			t_exit;
+}				t_exit;
 
 typedef struct s_images
 {
@@ -84,12 +84,13 @@ typedef struct s_data
 	t_exit		exit;
 }				t_data;
 
+void			map_name_check(char **av);
 int				ft_strlen(char *str);
 char			*get_next_line(int fd);
 void			*ft_free(char *line);
 char			*ft_strdup(char *s1);
 int				maplinescount(int fd);
-char			**fill_map(void);
+char			**fill_map(char **av);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void			draw_image(t_data *data, char *file_path, int x, int y);
 void			ft_putstr_fd(char *s, int fd);
@@ -106,10 +107,10 @@ void			handle_down(int keycode, t_data *img);
 void			handle_left(int keycode, t_data *img);
 void			handle_right(int keycode, t_data *img);
 void			image_size(int i, int j, t_data img);
-void			init_data(t_data *img);
-void   			exit_image_according_to_collec(t_data *img);
+void			init_data(t_data *img, char **av, int ac);
+void			exit_image_according_to_collec(t_data *img);
 int				map_walls(t_map *play);
-int 			flood_fill(char **map, int x, int y, char target);
+int				flood_fill(char **map, int x, int y, char target);
 int				ft_line_count(char **map);
 int				mlx_quit(t_data *data);
 void			insert_xpm_to_char(t_data *img);

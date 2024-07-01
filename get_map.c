@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 16:55:46 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/01 14:03:38 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/01 19:30:31 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,55 @@ int	maplinescount(int fd)
 	int		i;
 
 	i = 0;
-	while ((buffer = get_next_line(fd)) != NULL)
+	buffer = get_next_line(fd);
+	while (buffer != NULL)
 	{
+		if (i == 0)
+			free(buffer);
+		buffer = get_next_line(fd);
 		free(buffer);
 		i++;
 	}
+	close(fd);
 	return (i);
 }
 
-char	**fill_map(void)
+void	map_name_check(char **av)
+{
+	int		i;
+	char	*line;
+
+	i = 0;
+	line = &av[1][0];
+	i = ft_strlen(line);
+	if (av[1][i - 1] != 'r' || av[1][i - 2] != 'e' || av[1][i - 3] != 'b'
+		|| av[1][i - 4] != '.')
+	{
+		ft_putstr_fd("invalid type of files only [.ber] files allowed", 1);
+		exit(1);
+	}
+}
+
+char	**fill_map(char **av)
 {
 	t_map	m;
 
-	m.fd = open("maps/map.ber", O_RDONLY);
+	m.fd = open(&av[1][0], O_RDONLY);
 	if (m.fd < 0)
 		return (NULL);
 	m.maplines = maplinescount(m.fd);
-	close(m.fd);
 	m.map = (char **)malloc((m.maplines + 1) * sizeof(char *));
 	if (!m.map)
 		return (NULL);
-	m.fd = open("maps/map.ber", O_RDONLY);
+	m.fd = open(&av[1][0], O_RDONLY);
 	if (m.fd < 0)
 		return (NULL);
 	m.i = 0;
-	while ((m.buffer = get_next_line(m.fd)) != NULL)
+	while (1)
 	{
+		m.buffer = get_next_line(m.fd);
+		if (m.buffer == NULL)
+			break ;
 		m.map[m.i] = ft_strdup(m.buffer);
 		free(m.buffer);
 		m.i++;
@@ -55,7 +78,9 @@ char	**fill_map(void)
 
 int	ft_line_count(char **map)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (map[i] != NULL)
 	{
 		i++;

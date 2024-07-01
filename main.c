@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:41:27 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/01 14:45:19 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/01 19:27:53 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,21 @@ void	image_size(int i, int j, t_data img)
 	}
 }
 
-void	init_data(t_data *img)
+void	init_data(t_data *img, char **av, int ac)
 {
-	img->map.map = fill_map();
-	img->map.map_test = fill_map();
+	if (ac != 2)
+	{
+		ft_putstr_fd("invalid param", 1);
+		exit(0);
+	}
+	map_name_check(av);
+	img->map.map = fill_map(av);
+	if (img->map.map == NULL)
+	{
+		ft_putstr_fd("invalid param", 1);
+		exit(0);
+	}
+	img->map.map_test = fill_map(av);
 	img->map.x = mapcheck_return_size(img->map.map);
 	img->map.y = ft_strlen(img->map.map[0]) - 1;
 	img->map.resolution_x = img->map.x * 50;
@@ -84,11 +95,11 @@ void	flood_fill_logic(t_data *img)
 	free(img->map.map_test);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_data	img;
 
-	init_data(&img);
+	init_data(&img, av, ac);
 	map_walls(&img.map);
 	player_location(&img.map);
 	flood_fill_logic(&img);
