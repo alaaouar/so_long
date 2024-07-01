@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:10:20 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/01 14:03:54 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/01 18:48:52 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_image(t_data *data, char *file_path, int x, int y)
 		exit(1);
 	}
 	mlx_put_image_to_window(data->mlx, data->win, img, x, y);
-	mlx_destroy_image(data->mlx, img); // - destroy the image after putting it to window
+	mlx_destroy_image(data->mlx, img);
 }
 
 int	mapcheck_return_size(char **map)
@@ -88,5 +88,3 @@ void	map_design(t_data img, char **map)
 		img.i++;
 	}
 }
-
-

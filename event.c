@@ -26,9 +26,10 @@ int	mlx_quit(t_data *data)
 {
 	mlx_loop_end(data->mlx);
 	mlx_loop_hook(data->mlx, NULL, NULL);
-	ft_putstr_fd("\n+------------------------------------------+\n|  "\
-		"Wish you enjoyed it, have a good day!!  "\
-		"|\n+------------------------------------------+\n\n", 1);
+	ft_putstr_fd("\n+------------------------------------------+\n|  "
+					"Wish you enjoyed it, have a good day!!  "
+					"|\n+------------------------------------------+\n\n",
+					1);
 	return (0);
 }
 
@@ -47,7 +48,7 @@ void	handle_up(int keycode, t_data *img)
 			exit(0);
 		}
 		else if (img->map.map[img->map.player_y - 1][img->map.player_x] == 'E'
-				&& img->map.collectibles != 0)
+			&& img->map.collectibles != 0)
 		{
 			ft_putstr_fd("\r You need to collect all the collectibles\n", 1);
 			return ;
@@ -76,7 +77,7 @@ void	handle_down(int keycode, t_data *img)
 			exit(0);
 		}
 		else if (img->map.map[img->map.player_y + 1][img->map.player_x] == 'E'
-				&& img->map.collectibles != 0)
+			&& img->map.collectibles != 0)
 		{
 			ft_putstr_fd("\r You need to collect all the collectibles\n", 1);
 			return ;
@@ -105,7 +106,7 @@ void	handle_left(int keycode, t_data *img)
 			exit(0);
 		}
 		else if (img->map.map[img->map.player_y][img->map.player_x - 1] == 'E'
-				&& img->map.collectibles != 0)
+			&& img->map.collectibles != 0)
 		{
 			ft_putstr_fd("\r You need to collect all the collectibles\n", 1);
 			return ;
@@ -134,7 +135,7 @@ void	handle_right(int keycode, t_data *img)
 			exit(0);
 		}
 		else if (img->map.map[img->map.player_y][img->map.player_x + 1] == 'E'
-				&& img->map.collectibles != 0)
+			&& img->map.collectibles != 0)
 		{
 			ft_putstr_fd("\r You need to collect all the collectibles", 1);
 			return ;
@@ -148,18 +149,15 @@ void	handle_right(int keycode, t_data *img)
 	}
 }
 
-int flood_fill(char **map, int x, int y, char target)
+int	flood_fill(char **map, int x, int y, char target)
 {
-    if (x < 0 || x >= ft_line_count(map) || y < 0 || y >= (int)strlen(map[0])
-        || map[x][y] == '1' || map[x][y] == '*')
-        return 0;
-    
-    if (map[x][y] == target)
-        return 1;
-	
-    map[x][y] = '*';
-    return (flood_fill(map, x + 1, y, target) ||
-            flood_fill(map, x - 1, y, target) ||
-            flood_fill(map, x, y + 1, target) ||
-            flood_fill(map, x, y - 1, target));
+	if (x < 0 || x >= ft_line_count(map) || y < 0 || y >= (int)strlen(map[0])
+		|| map[x][y] == '1' || map[x][y] == '*')
+		return (0);
+	if (map[x][y] == target)
+		return (1);
+	map[x][y] = '*';
+	return (flood_fill(map, x + 1, y, target) || flood_fill(map, x - 1, y,
+			target) || flood_fill(map, x, y + 1, target) || flood_fill(map, x, y
+			- 1, target));
 }

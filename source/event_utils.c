@@ -49,32 +49,29 @@ void	collectibles_checker(t_map *play)
 
 int	handle_keyboard(int keycode, t_data *img)
 {
-	static int i = 0;
-	
+	static int	i = 0;
+
 	handle_exit(keycode, img);
 	handle_up(keycode, img);
 	handle_down(keycode, img);
 	handle_left(keycode, img);
 	handle_right(keycode, img);
-	if (keycode == 119 ||
-		keycode == 115 || 
-		keycode == 97 || 
-		keycode == 100)
-	i++;
+	if (keycode == 119 || keycode == 115 || keycode == 97 || keycode == 100)
+		i++;
 	ft_putstr_fd("\r Moves: ", 1);
 	ft_putnbr_fd(i, 1);
 	return (0);
 }
 
-void    exit_image_according_to_collec(t_data *img)
+void	exit_image_according_to_collec(t_data *img)
 {
 	if (img->map.collectibles == 0)
 		img->exit.exit = img->exit.exit_4;
-	else if(img->map.collectibles == 1)
+	else if (img->map.collectibles == 1)
 		img->exit.exit = img->exit.exit_3;
-	else if(img->map.collectibles == 2)
+	else if (img->map.collectibles == 2)
 		img->exit.exit = img->exit.exit_2;
-	else if(img->map.collectibles == 3)
+	else if (img->map.collectibles == 3)
 		img->exit.exit = img->exit.exit_1;
 	else
 		img->exit.exit = "image/exit_1.xpm";

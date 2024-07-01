@@ -23,7 +23,6 @@ int	maplinescount(int fd)
 		free(buffer);
 		i++;
 	}
-
 	return (i);
 }
 

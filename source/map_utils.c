@@ -6,33 +6,33 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 22:10:59 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/01 14:03:59 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/01 18:48:18 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int check_last(char *str)
+int	check_last(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (ft_strlen(str) == 1)
 		return (1);
-	while (str[i] != '\n' && str[i] != '\0') // - HERE && instad of ||
+	while (str[i] != '\n' && str[i] != '\0')
 		i++;
 	if (str[i - 1] == '1')
 		return (1);
 	return (0);
 }
 
-int map_check_if_walls_arround(t_map *play)
+int	map_check_if_walls_arround(t_map *play)
 {
 	int	i;
 
 	i = 0;
-	while(play->map[i] != NULL)
-	{		
+	while (play->map[i] != NULL)
+	{
 		if (play->map[i][0] != '1' || !check_last(play->map[i]))
 		{
 			ft_putstr_fd("Error\nMap is invalid right or left.\n", 2);
@@ -45,7 +45,8 @@ int map_check_if_walls_arround(t_map *play)
 		i++;
 	while (play->map[0][i])
 	{
-		if ((play->map[0][i] != '1' || play->map[play->x - 1][i] != '1') && i < play->y)
+		if ((play->map[0][i] != '1' || play->map[play->x - 1][i] != '1')
+			&& i < play->y)
 		{
 			ft_putstr_fd("Error\nMap is invalid top or down.\n", 2);
 			exit(1);
@@ -80,4 +81,3 @@ int	map_walls(t_map *play)
 	map_check_if_walls_arround(play);
 	return (0);
 }
-
