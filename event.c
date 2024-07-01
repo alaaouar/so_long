@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 22:26:39 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/27 19:24:56 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:03:44 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	handle_exit(int keycode, t_data *img)
 {
 	if (keycode == 65307)
 	{
-		ft_putstr_fd("\n exiting...", 1);
+		ft_putstr_fd("\n exiting... \n", 1);
 		mlx_destroy_window(img->mlx, img->win);
 		exit(0);
 	}
@@ -49,7 +49,7 @@ void	handle_up(int keycode, t_data *img)
 		else if (img->map.map[img->map.player_y - 1][img->map.player_x] == 'E'
 				&& img->map.collectibles != 0)
 		{
-			ft_putstr_fd("\n You need to collect all the collectibles\n", 1);
+			ft_putstr_fd("\r You need to collect all the collectibles\n", 1);
 			return ;
 		}
 		if (img->map.map[img->map.player_y - 1][img->map.player_x] == 'C')
@@ -78,7 +78,7 @@ void	handle_down(int keycode, t_data *img)
 		else if (img->map.map[img->map.player_y + 1][img->map.player_x] == 'E'
 				&& img->map.collectibles != 0)
 		{
-			ft_putstr_fd("\n You need to collect all the collectibles\n", 1);
+			ft_putstr_fd("\r You need to collect all the collectibles\n", 1);
 			return ;
 		}
 		if (img->map.map[img->map.player_y + 1][img->map.player_x] == 'C')
@@ -107,7 +107,7 @@ void	handle_left(int keycode, t_data *img)
 		else if (img->map.map[img->map.player_y][img->map.player_x - 1] == 'E'
 				&& img->map.collectibles != 0)
 		{
-			ft_putstr_fd("\n You need to collect all the collectibles\n", 1);
+			ft_putstr_fd("\r You need to collect all the collectibles\n", 1);
 			return ;
 		}
 		if (img->map.map[img->map.player_y][img->map.player_x - 1] == 'C')
@@ -136,7 +136,7 @@ void	handle_right(int keycode, t_data *img)
 		else if (img->map.map[img->map.player_y][img->map.player_x + 1] == 'E'
 				&& img->map.collectibles != 0)
 		{
-			ft_putstr_fd("\n You need to collect all the collectibles", 1);
+			ft_putstr_fd("\r You need to collect all the collectibles", 1);
 			return ;
 		}
 		if (img->map.map[img->map.player_y][img->map.player_x + 1] == 'C')

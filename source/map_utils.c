@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 22:10:59 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/27 19:25:08 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:03:59 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int check_last(char *str)
 	i = 0;
 	if (ft_strlen(str) == 1)
 		return (1);
-	while (str[i] != '\n' || str[i] != '\0')
+	while (str[i] != '\n' && str[i] != '\0') // - HERE && instad of ||
 		i++;
 	if (str[i - 1] == '1')
 		return (1);

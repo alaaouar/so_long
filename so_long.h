@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:08:21 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/27 20:09:49 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:41:12 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,6 @@ typedef struct s_exit
 	char		*exit;
 }			t_exit;
 
-typedef struct t_draw
-{
-	void	*pl_ptr;
-	void	*pr_ptr;
-	void	*pu_ptr;
-	void	*pd_ptr	;
-	void	*cl_ptr;
-	void	*e1;
-	void	*e2;
-	void	*e3;
-	void	*e4;
-	void	*back;
-	void	*wall;
-}				draw;
-
 typedef struct s_images
 {
 	char		*player_left;
@@ -53,6 +38,8 @@ typedef struct s_images
 	char		*player_up;
 	char		*player_down;
 	char		*player;
+	char		*win_game;
+	char		*door;
 }				t_images;
 typedef struct t_valid
 {
@@ -95,7 +82,6 @@ typedef struct s_data
 	t_images	images;
 	t_valid		valid;
 	t_exit		exit;
-	t_draw		draw;
 }				t_data;
 
 int				ft_strlen(char *str);

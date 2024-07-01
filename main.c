@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:41:27 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/27 19:49:43 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:45:19 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	player_location(t_map *play)
 	}
 	return (0);
 }
+
 void	image_size(int i, int j, t_data img)
 {
 	if (i > 1440 || j > 2560)
@@ -64,10 +65,11 @@ void	init_data(t_data *img)
 
 void	flood_fill_logic(t_data *img)
 {
-	int i;
+	int	i;
 
-	i = 0;	
-	i = flood_fill(img->map.map_test, img->map.player_x, img->map.player_y, 'E');
+	i = 0;
+	i = flood_fill(img->map.map_test, img->map.player_x, img->map.player_y,
+			'E');
 	if (i == 0)
 	{
 		ft_putstr_fd("map not valid flood-fill", 1);
@@ -75,29 +77,12 @@ void	flood_fill_logic(t_data *img)
 	}
 	i = 0;
 	while (img->map.map_test[i] != NULL)
-		{
-			free(img->map.map_test[i]);
-			i++;
-		}
+	{
+		free(img->map.map_test[i]);
+		i++;
+	}
 	free(img->map.map_test);
 }
-
-void	mlx_mem_free(t_data *data)
-{
-	mlx_destroy_image(data->mlx, data->img);
-	mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
-}
-
-
-void	mlx_everything(t_data *img)
-{
-	img->mlx = mlx_init();
-	img->win = mlx_new_window(img->mlx, img->map.resolution_y, img->map.resolution_x, "dark_souls");
-	
-}
-
 
 int	main(void)
 {
@@ -108,15 +93,12 @@ int	main(void)
 	player_location(&img.map);
 	flood_fill_logic(&img);
 	image_size(img.map.x, img.map.y, img);
-	mlx_everything(&img);
-	collectibles_checker(&img.map);	
+	img.mlx = mlx_init();
+	img.win = mlx_new_window(img.mlx, img.map.resolution_y,
+			img.map.resolution_x, "dark_souls");
+	collectibles_checker(&img.map);
+	exit_image_according_to_collec(&img);
 	map_design(img, img.map.map);
-	
-	
-
-
-
-	
 	mlx_key_hook(img.win, handle_keyboard, &img);
 	mlx_hook(img.win, DestroyNotify, 0, mlx_quit, &img);
 	mlx_loop(img.mlx);
