@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:21:06 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/06 16:03:40 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/06 18:09:50 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,20 @@ void	free_split(t_data img)
 
 void cleanup(t_data *data)
 {
-	if (data != NULL)
+	data->i = 0;
+	while (data->map.map[data->i] != NULL)
 	{
-        free_split(*data);
-        if (data->win != NULL)
-            mlx_destroy_window(data->mlx, data->win);
-        if (data->mlx != NULL)
-		{
-            mlx_destroy_display(data->mlx);
-            free(data->mlx);
-        }
-        free(data);
-    }
+		free(data->map.map[data->i]);
+		data->i++;
+	}
+	free(data->map.map);
+	if (data->win != NULL)
+		mlx_destroy_window(data->mlx, data->win);
+	if (data->mlx != NULL)
+	{
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+	}
+	// free(data);
 	exit(0);
 }

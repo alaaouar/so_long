@@ -1,7 +1,7 @@
 CC		= cc
 SRC		= source/get_next_line.c source/lib_utils.c main.c get_map.c source/mlx_utils.c event.c source/event_utils.c source/map_utils.c source/manager.c
 NAME	= so_long
-CFLAGS	= -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS	= -Wall -Wextra -Werror 
 CLIBS	= -Lmlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz
 OBJ		= $(SRC:.c=.o)
 

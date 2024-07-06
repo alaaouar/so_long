@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 22:10:59 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/06 16:07:57 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/06 18:27:39 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	map_check_if_walls_arround(t_map *play ,t_data *img)
 		{
 			ft_putstr_fd("Error\nMap is invalid top or down.\n", 2);
 			cleanup(img);
+			exit(0);
 		}
 		i++;
 	}
