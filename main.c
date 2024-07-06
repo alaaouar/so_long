@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:41:27 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/06 15:48:37 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/06 18:48:38 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,6 @@ int	main(int ac, char **av)
 		img.i++;
 	}
 	free(img.map.map);
+	img.map.map = NULL;
 	return (0);
 }

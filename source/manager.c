@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:21:06 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/06 18:09:50 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/06 19:05:20 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,49 @@ void	free_split(t_data img)
 
 void cleanup(t_data *data)
 {
-	data->i = 0;
-	while (data->map.map[data->i] != NULL)
+	int i;
+
+	i = 0;	
+	while (data->map.map[i] != NULL)
 	{
-		free(data->map.map[data->i]);
-		data->i++;
+		free(data->map.map[i]);
+		i++;
 	}
 	free(data->map.map);
-	if (data->win != NULL)
-		mlx_destroy_window(data->mlx, data->win);
-	if (data->mlx != NULL)
+	i = 0;
+	while (data->map.map_test[i] != NULL)
 	{
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
+		free(data->map.map_test[i]);
+		i++;
 	}
-	// free(data);
+	free(data->map.map_test);
+	
 	exit(0);
+}
+
+	// if (data->win != NULL)
+	// 	mlx_destroy_window(data->mlx, data->win);
+	// if (data->mlx != NULL)
+	// {
+	// 	mlx_destroy_display(data->mlx);
+	// 	free(data->mlx);
+	// }
+void	free_map(t_map *play)
+{
+	int	i;
+
+	i = 0;
+	while(play->map[i] != NULL)
+	{
+		free(play->map[i]);
+		i++;
+	}
+	free(play->map);
+	i = 0;
+	while(play->map_test[i] != NULL)
+	{
+		free(play->map_test[i]);
+		i++;
+	}
+	free(play->map_test);
 }

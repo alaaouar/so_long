@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 22:10:59 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/06 18:27:39 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/06 18:50:12 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ void	map_check_if_walls_arround(t_map *play ,t_data *img)
 	int	i;
 
 	i = 0;
+	if (img->i == 1)
+		putchar('a');
 	while (play->map[i] != NULL)
 	{
 		if (play->map[i][0] != '1' || !check_last(play->map[i]))
 		{
 			ft_putstr_fd("Error\nMap is invalid right or left.\n", 2);
-			cleanup(img);
+			free_map(play);
+			exit(0);
 		}
 		i++;
 	}
@@ -49,7 +52,7 @@ void	map_check_if_walls_arround(t_map *play ,t_data *img)
 			&& i < play->y)
 		{
 			ft_putstr_fd("Error\nMap is invalid top or down.\n", 2);
-			cleanup(img);
+			free_map(play);
 			exit(0);
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:10:20 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/01 18:48:52 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/06 19:01:52 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	mapcheck_return_size(char **map, t_data *data)
 		count++;
 	if (count == 0 || map[0][0] == '\n')
 	{
-		ft_putstr_fd("Error\nMap is empty.\n", 2);
+		ft_putstr_fd("Error Map is empty", 1);
 		cleanup(data);
 	}
 	while (map[i])

@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:08:21 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/06 15:22:44 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/06 18:39:57 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,6 @@ int				mlx_quit(t_data *data);
 void			insert_xpm_to_char(t_data *img);
 void			free_split(t_data img);
 void			cleanup(t_data *data);
+void			free_map(t_map *play);
 
 #endif
