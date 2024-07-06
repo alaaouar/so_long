@@ -22,13 +22,13 @@ void	draw_image(t_data *data, char *file_path, int x, int y)
 	if (!img)
 	{
 		ft_putstr_fd("Error\nFailed to load image.\n", 2);
-		exit(1);
+		cleanup(data);
 	}
 	mlx_put_image_to_window(data->mlx, data->win, img, x, y);
 	mlx_destroy_image(data->mlx, img);
 }
 
-int	mapcheck_return_size(char **map)
+int	mapcheck_return_size(char **map, t_data *data)
 {
 	int	count;
 	int	i;
@@ -40,14 +40,14 @@ int	mapcheck_return_size(char **map)
 	if (count == 0 || map[0][0] == '\n')
 	{
 		ft_putstr_fd("Error\nMap is empty.\n", 2);
-		exit(1);
+		cleanup(data);
 	}
 	while (map[i])
 	{
 		if (ft_strlen(map[i]) != ft_strlen(map[i + 1]) && i < count - 2)
 		{
 			ft_putstr_fd("Error\nMap is not rectangular.\n", 2);
-			exit(1);
+			cleanup(data);
 		}
 		i++;
 	}
@@ -78,11 +78,7 @@ void	map_design(t_data img, char **map)
 				|| (map[img.i][img.j] == 'P') || (map[img.i][img.j] == 'E'))
 				map_2(img, map);
 			else if (map[img.i][img.j] == 'C')
-			{
-				draw_image(&img, "image/Background.xpm", img.j * 50, img.i
-					* 50);
 				draw_image(&img, "image/Collect.xpm", img.j * 50, img.i * 50);
-			}
 			img.j++;
 		}
 		img.i++;

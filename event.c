@@ -23,7 +23,7 @@ void	handle_up(int keycode, t_data *img)
 			&& img->map.collectibles == 0)
 		{
 			ft_putstr_fd("\nYou won\n", 1);
-			mlx_destroy_window(img->mlx, img->win);
+			cleanup(img);
 			exit(0);
 		}
 		else if (img->map.map[img->map.player_y - 1][img->map.player_x] == 'E'
@@ -52,7 +52,7 @@ void	handle_down(int keycode, t_data *img)
 			&& img->map.collectibles == 0)
 		{
 			ft_putstr_fd("\nYou won\n", 1);
-			mlx_destroy_window(img->mlx, img->win);
+			cleanup(img);
 			exit(0);
 		}
 		else if (img->map.map[img->map.player_y + 1][img->map.player_x] == 'E'
@@ -81,7 +81,7 @@ void	handle_left(int keycode, t_data *img)
 			&& img->map.collectibles == 0)
 		{
 			ft_putstr_fd("\nYou won\n", 1);
-			mlx_destroy_window(img->mlx, img->win);
+			cleanup(img);
 			exit(0);
 		}
 		else if (img->map.map[img->map.player_y][img->map.player_x - 1] == 'E'
@@ -110,7 +110,7 @@ void	handle_right(int keycode, t_data *img)
 			&& img->map.collectibles == 0)
 		{
 			ft_putstr_fd("\nYou won\n", 1);
-			mlx_destroy_window(img->mlx, img->win);
+			cleanup(img);
 			exit(0);
 		}
 		else if (img->map.map[img->map.player_y][img->map.player_x + 1] == 'E'

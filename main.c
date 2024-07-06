@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:41:27 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/01 19:27:53 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/06 15:48:37 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ int	player_location(t_map *play)
 {
 	int	i;
 	int	j;
+
+	if (!play || !play->map)
+		return (-1);
 
 	i = 0;
 	while (play->map[i] != NULL)
@@ -27,6 +30,7 @@ int	player_location(t_map *play)
 			{
 				play->player_x = j;
 				play->player_y = i;
+				return 0;
 			}
 			j++;
 		}
@@ -65,7 +69,7 @@ void	init_data(t_data *img, char **av, int ac)
 		exit(0);
 	}
 	img->map.map_test = fill_map(av);
-	img->map.x = mapcheck_return_size(img->map.map);
+	img->map.x = mapcheck_return_size(img->map.map, img);
 	img->map.y = ft_strlen(img->map.map[0]) - 1;
 	img->map.resolution_x = img->map.x * 50;
 	img->map.resolution_y = img->map.y * 50;
@@ -84,6 +88,7 @@ void	flood_fill_logic(t_data *img)
 	if (i == 0)
 	{
 		ft_putstr_fd("map not valid flood-fill", 1);
+		free_split(*img);
 		exit(0);
 	}
 	i = 0;
@@ -100,14 +105,14 @@ int	main(int ac, char **av)
 	t_data	img;
 
 	init_data(&img, av, ac);
-	map_walls(&img.map);
+	map_walls(&img.map , &img);
 	player_location(&img.map);
 	flood_fill_logic(&img);
 	image_size(img.map.x, img.map.y, img);
 	img.mlx = mlx_init();
 	img.win = mlx_new_window(img.mlx, img.map.resolution_y,
 			img.map.resolution_x, "dark_souls");
-	collectibles_checker(&img.map);
+	collectibles_checker(&img.map, &img);
 	exit_image_according_to_collec(&img);
 	map_design(img, img.map.map);
 	mlx_key_hook(img.win, handle_keyboard, &img);

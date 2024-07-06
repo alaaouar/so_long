@@ -6,22 +6,22 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:18:47 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/06/27 19:43:22 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/06 15:24:46 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	checker(int x, int y)
+void	checker(int x, int y, t_data *img)
 {
 	if (x != 1 || y != 1)
 	{
 		ft_putstr_fd("Error\nMap is invalid.\n", 2);
-		exit(1);
+		cleanup(img);
 	}
 }
 
-void	collectibles_checker(t_map *play)
+void	collectibles_checker(t_map *play , t_data *img)
 {
 	int	i;
 	int	j;
@@ -44,7 +44,7 @@ void	collectibles_checker(t_map *play)
 		}
 		i++;
 	}
-	checker(play->valid.player, play->valid.exit);
+	checker(play->valid.player, play->valid.exit, img);
 }
 
 int	handle_keyboard(int keycode, t_data *img)

@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:21:06 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/01 19:01:35 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/06 16:03:40 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	handle_exit(int keycode, t_data *img)
 	if (keycode == 65307)
 	{
 		ft_putstr_fd("\n exiting... \n", 1);
-		mlx_destroy_window(img->mlx, img->win);
+		cleanup(img);
 		exit(0);
 	}
 }
@@ -39,9 +39,34 @@ int	mlx_quit(t_data *data)
 {
 	mlx_loop_end(data->mlx);
 	mlx_loop_hook(data->mlx, NULL, NULL);
-	ft_putstr_fd("\n+------------------------------------------+\n|  "
-		"Wish you enjoyed it, have a good day!!  "
-		"|\n+------------------------------------------+\n\n",
-		1);
+	ft_putstr_fd("\n exiting... \n",1);
+	cleanup(data);
 	return (0);
+}
+
+void	free_split(t_data img)
+{
+	while (img.map.map[img.i] != NULL)
+	{
+		free(img.map.map[img.i]);
+		img.i++;
+	}
+	free(img.map.map);
+}
+
+void cleanup(t_data *data)
+{
+	if (data != NULL)
+	{
+        free_split(*data);
+        if (data->win != NULL)
+            mlx_destroy_window(data->mlx, data->win);
+        if (data->mlx != NULL)
+		{
+            mlx_destroy_display(data->mlx);
+            free(data->mlx);
+        }
+        free(data);
+    }
+	exit(0);
 }
