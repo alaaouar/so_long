@@ -6,29 +6,18 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:18:47 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/06 15:24:46 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/08 09:50:47 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	checker(int x, int y, t_data *img)
+void	checker(t_map *play)
 {
-	if (x != 1 || y != 1)
-	{
-		ft_putstr_fd("Error\nMap is invalid.\n", 2);
-		cleanup(img);
-	}
-}
-
-void	collectibles_checker(t_map *play , t_data *img)
-{
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
-	play->valid.player = 0;
-	play->valid.exit = 0;
 	while (play->map[i] != NULL)
 	{
 		j = 0;
@@ -44,7 +33,23 @@ void	collectibles_checker(t_map *play , t_data *img)
 		}
 		i++;
 	}
-	checker(play->valid.player, play->valid.exit, img);
+}
+
+void	collectibles_checker(t_map *play, t_data *img)
+{
+	play->valid.player = 0;
+	play->valid.exit = 0;
+	checker(play);
+	if (play->collectibles == 0)
+	{
+		ft_putstr_fd("Error Map invalid\nno collectibels\n", 1);
+		free_map(play);
+	}
+	if (play->valid.player != 1 || play->valid.exit != 1)
+	{
+		ft_putstr_fd("Error\nMap is invalid.\n", 2);
+		cleanup(img);
+	}
 }
 
 int	handle_keyboard(int keycode, t_data *img)
@@ -75,4 +80,13 @@ void	exit_image_according_to_collec(t_data *img)
 		img->exit.exit = img->exit.exit_1;
 	else
 		img->exit.exit = "image/exit_1.xpm";
+}
+
+void	mlx_hunter(t_data *data)
+{
+	mlx_loop_end(data->mlx);
+	mlx_loop_hook(data->mlx, NULL, NULL);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
 }

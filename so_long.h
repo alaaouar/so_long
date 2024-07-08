@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 21:08:21 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/06 18:39:57 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/08 09:41:28 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,9 @@ void			draw_image(t_data *data, char *file_path, int x, int y);
 void			ft_putstr_fd(char *s, int fd);
 int				mapcheck_return_size(char **map, t_data *data);
 void			map_design(t_data img, char **map);
-void			player_image(t_data *img);
 int				handle_keyboard(int keycode, t_data *img);
 void			collectibles_checker(t_map *map, t_data *img);
 void			ft_putnbr_fd(int n, int fd);
-void			checker(int x, int y, t_data *img);
 void			handle_exit(int keycode, t_data *img);
 void			handle_up(int keycode, t_data *img);
 void			handle_down(int keycode, t_data *img);
@@ -108,13 +106,13 @@ void			handle_right(int keycode, t_data *img);
 void			image_size(int i, int j, t_data img);
 void			init_data(t_data *img, char **av, int ac);
 void			exit_image_according_to_collec(t_data *img);
-int				map_walls(t_map *play , t_data *img);
+int				map_walls(t_map *play, t_data *img);
 int				flood_fill(char **map, int x, int y, char target);
 int				ft_line_count(char **map);
 int				mlx_quit(t_data *data);
 void			insert_xpm_to_char(t_data *img);
-void			free_split(t_data img);
 void			cleanup(t_data *data);
 void			free_map(t_map *play);
+void			mlx_hunter(t_data *data);
 
 #endif

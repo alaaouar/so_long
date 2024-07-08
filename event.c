@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 22:26:39 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/01 18:51:35 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/08 09:47:27 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	handle_up(int keycode, t_data *img)
 			&& img->map.collectibles == 0)
 		{
 			ft_putstr_fd("\nYou won\n", 1);
+			mlx_hunter(img);
 			cleanup(img);
-			exit(0);
 		}
 		else if (img->map.map[img->map.player_y - 1][img->map.player_x] == 'E'
 			&& img->map.collectibles != 0)
@@ -52,8 +52,8 @@ void	handle_down(int keycode, t_data *img)
 			&& img->map.collectibles == 0)
 		{
 			ft_putstr_fd("\nYou won\n", 1);
+			mlx_hunter(img);
 			cleanup(img);
-			exit(0);
 		}
 		else if (img->map.map[img->map.player_y + 1][img->map.player_x] == 'E'
 			&& img->map.collectibles != 0)
@@ -81,8 +81,8 @@ void	handle_left(int keycode, t_data *img)
 			&& img->map.collectibles == 0)
 		{
 			ft_putstr_fd("\nYou won\n", 1);
+			mlx_hunter(img);
 			cleanup(img);
-			exit(0);
 		}
 		else if (img->map.map[img->map.player_y][img->map.player_x - 1] == 'E'
 			&& img->map.collectibles != 0)
@@ -110,8 +110,8 @@ void	handle_right(int keycode, t_data *img)
 			&& img->map.collectibles == 0)
 		{
 			ft_putstr_fd("\nYou won\n", 1);
+			mlx_hunter(img);
 			cleanup(img);
-			exit(0);
 		}
 		else if (img->map.map[img->map.player_y][img->map.player_x + 1] == 'E'
 			&& img->map.collectibles != 0)

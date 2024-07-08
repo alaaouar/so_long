@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:41:27 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/06 18:48:38 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/07 22:35:31 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	player_location(t_map *play)
 
 	if (!play || !play->map)
 		return (-1);
-
 	i = 0;
 	while (play->map[i] != NULL)
 	{
@@ -30,7 +29,7 @@ int	player_location(t_map *play)
 			{
 				play->player_x = j;
 				play->player_y = i;
-				return 0;
+				return (0);
 			}
 			j++;
 		}
@@ -68,7 +67,6 @@ void	init_data(t_data *img, char **av, int ac)
 		ft_putstr_fd("invalid param", 1);
 		exit(0);
 	}
-	img->map.map_test = fill_map(av);
 	img->map.x = mapcheck_return_size(img->map.map, img);
 	img->map.y = ft_strlen(img->map.map[0]) - 1;
 	img->map.resolution_x = img->map.x * 50;
@@ -78,19 +76,14 @@ void	init_data(t_data *img, char **av, int ac)
 	insert_xpm_to_char(img);
 }
 
-void	flood_fill_logic(t_data *img)
+void	flood_fill_logic(t_data *img, char **av)
 {
 	int	i;
 
 	i = 0;
+	img->map.map_test = fill_map(av);
 	i = flood_fill(img->map.map_test, img->map.player_x, img->map.player_y,
 			'E');
-	if (i == 0)
-	{
-		ft_putstr_fd("map not valid flood-fill", 1);
-		free_split(*img);
-		exit(0);
-	}
 	i = 0;
 	while (img->map.map_test[i] != NULL)
 	{
@@ -98,6 +91,11 @@ void	flood_fill_logic(t_data *img)
 		i++;
 	}
 	free(img->map.map_test);
+	if (i == 0)
+	{
+		ft_putstr_fd("map not valid flood-fill", 1);
+		exit(0);
+	}
 }
 
 int	main(int ac, char **av)
@@ -105,25 +103,19 @@ int	main(int ac, char **av)
 	t_data	img;
 
 	init_data(&img, av, ac);
-	map_walls(&img.map , &img);
+	map_walls(&img.map, &img);
 	player_location(&img.map);
-	flood_fill_logic(&img);
+	flood_fill_logic(&img, av);
+	collectibles_checker(&img.map, &img);
 	image_size(img.map.x, img.map.y, img);
+	exit_image_according_to_collec(&img);
 	img.mlx = mlx_init();
 	img.win = mlx_new_window(img.mlx, img.map.resolution_y,
 			img.map.resolution_x, "dark_souls");
-	collectibles_checker(&img.map, &img);
-	exit_image_according_to_collec(&img);
 	map_design(img, img.map.map);
 	mlx_key_hook(img.win, handle_keyboard, &img);
 	mlx_hook(img.win, DestroyNotify, 0, mlx_quit, &img);
 	mlx_loop(img.mlx);
-	while (img.map.map[img.i] != NULL)
-	{
-		free(img.map.map[img.i]);
-		img.i++;
-	}
-	free(img.map.map);
-	img.map.map = NULL;
+	cleanup(&img);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alaaouar <alaaouar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 22:10:59 by alaaouar          #+#    #+#             */
-/*   Updated: 2024/07/06 18:50:12 by alaaouar         ###   ########.fr       */
+/*   Updated: 2024/07/07 21:35:29 by alaaouar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,17 @@ int	check_last(char *str)
 	return (0);
 }
 
-void	map_check_if_walls_arround(t_map *play ,t_data *img)
+void	map_check_if_walls_arround(t_map *play)
 {
 	int	i;
 
 	i = 0;
-	if (img->i == 1)
-		putchar('a');
 	while (play->map[i] != NULL)
 	{
 		if (play->map[i][0] != '1' || !check_last(play->map[i]))
 		{
 			ft_putstr_fd("Error\nMap is invalid right or left.\n", 2);
 			free_map(play);
-			exit(0);
 		}
 		i++;
 	}
@@ -53,7 +50,6 @@ void	map_check_if_walls_arround(t_map *play ,t_data *img)
 		{
 			ft_putstr_fd("Error\nMap is invalid top or down.\n", 2);
 			free_map(play);
-			exit(0);
 		}
 		i++;
 	}
@@ -81,6 +77,6 @@ int	map_walls(t_map *play, t_data *img)
 		}
 		i++;
 	}
-	map_check_if_walls_arround(play , img);
+	map_check_if_walls_arround(play);
 	return (0);
 }
